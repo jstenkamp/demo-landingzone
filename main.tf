@@ -33,6 +33,12 @@ resource "github_actions_secret" "tfc_oauth_token" {
   plaintext_value  = var.oauth_token_id
 }
 
+resource "github_actions_secret" "mondoo_token" {
+  repository       = github_repository.demo.name
+  secret_name      = "MONDOO_CONFIG_BASE64"
+  plaintext_value  = var.mondoo_token
+}
+
 
 #Workflow
 

@@ -17,3 +17,7 @@ variable "tfc_org" {
 variable "oauth_token_id" {
   
 }
+
+variable "mondoo_token" {
+  
+}
