@@ -31,39 +31,39 @@ resource "github_actions_secret" "tfc_token" {
 #Workflow
 
 
-resource "github_repository_file" "workflow" {
-  repository          = github_repository.demo.name
-  branch              = "main"
-  file                = ".github/workflows/flow1.yml"
-  content             = <<-EOF
-name: joern
+# resource "github_repository_file" "workflow" {
+#   repository          = github_repository.demo.name
+#   branch              = "main"
+#   file                = ".github/workflows/flow1.yml"
+#   content             = <<-EOF
+# name: joern
 
-on:
-  pull_request:
-  push:
-    branches: [main]
+# on:
+#   pull_request:
+#   push:
+#     branches: [main]
 
-jobs:
-  tfc_init:
-    runs-on: ubuntu-latest
-    env:
-      tfc_token: ${{ secrets.TFC_TOKEN }}
-      vcs_provider_oauth_token_id: ${{ secrets.TFC_OAUTH_TOKEN}} 
-    steps:
-      - name: clone repo
-        run: git clone https://github.com/joestack/tfc-api-bootstrap-script
-      - name: pwd
-        run: pwd && ls -la 
-      - name: cp tfcli to PATH
-        run: cp tfc-api-bootstrap-script/tfcli.sh /usr/local/bin
-      - name: test tfcli
-        run: tfcli.sh -V
-EOF
-  commit_message      = "Managed by Terraform"
-  commit_author       = "Terraform User"
-  commit_email        = "terraform@example.com"
-  overwrite_on_create = true
-}
+# jobs:
+#   tfc_init:
+#     runs-on: ubuntu-latest
+#     env:
+#       tfc_token: ${{ secrets.TFC_TOKEN }}
+#       vcs_provider_oauth_token_id: ${{ secrets.TFC_OAUTH_TOKEN}} 
+#     steps:
+#       - name: clone repo
+#         run: git clone https://github.com/joestack/tfc-api-bootstrap-script
+#       - name: pwd
+#         run: pwd && ls -la 
+#       - name: cp tfcli to PATH
+#         run: cp tfc-api-bootstrap-script/tfcli.sh /usr/local/bin
+#       - name: test tfcli
+#         run: tfcli.sh -V
+# EOF
+#   commit_message      = "Managed by Terraform"
+#   commit_author       = "Terraform User"
+#   commit_email        = "terraform@example.com"
+#   overwrite_on_create = true
+# }
 
 
 
