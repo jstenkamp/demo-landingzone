@@ -22,7 +22,7 @@ resource "github_repository" "demo" {
 #Secrets
 
 resource "github_actions_secret" "tfc_token" {
-  repository       = github_repository.demo.full_name
+  repository       = github_repository.demo.name
   secret_name      = "TFC_TOKEN"
   plaintext_value  = var.tfc_token
 }
