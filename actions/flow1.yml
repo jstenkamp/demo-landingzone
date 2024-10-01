@@ -1,4 +1,7 @@
-name: joern
+# Example GitHub Action to scan a Terraform config
+# See https://github.com/mondoohq/actions/tree/main/terraform-hcl for additional usage information.
+
+name: mondoo-cnspec-scan
 
 on:
   pull_request:
@@ -6,17 +9,16 @@ on:
     branches: [main]
 
 jobs:
-  tfc_init:
+  scan:
     runs-on: ubuntu-latest
-    env:
-      tfc_token: ${{ secrets.TFC_TOKEN }}
-      vcs_provider_oauth_token_id: ${{ secrets.TFC_OAUTH_TOKEN}} 
+
     steps:
-      - name: clone repo
-        run: git clone https://github.com/joestack/tfc-api-bootstrap-script
-      - name: pwd
-        run: pwd && ls -la 
-      - name: cp tfcli to PATH
-        run: cp tfc-api-bootstrap-script/tfcli.sh /usr/local/bin
-      - name: test tfcli
-        run: tfcli.sh -V
+      - uses: actions/checkout@v3
+      - name: where am I
+        run: pwd && ls -la
+      - name: Scan with cnspec
+        uses: mondoohq/actions/terraform-hcl@main
+        with:
+          service-account-credentials: ${{ secrets.MONDOO_CONFIG_BASE64 }}
+          path: "*.tf"
+          
