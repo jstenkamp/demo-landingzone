@@ -59,7 +59,7 @@ resource "github_repository_file" "workflow" {
 #### WORKSPACE ###
 
 resource "tfe_workspace" "demo" {
-  name         = "tfc-demo-01"
+  name         = "tfc-mondoo-01"
   organization = var.tfc_org
   #tag_names    = ["test", "app"]
   vcs_repo {
