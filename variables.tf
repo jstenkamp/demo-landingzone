@@ -21,3 +21,7 @@ variable "oauth_token_id" {
 variable "mondoo_token" {
   
 }
+
+variable "windows_password" {
+  
+}

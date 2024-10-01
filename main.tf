@@ -73,10 +73,10 @@ resource "tfe_workspace" "demo" {
   terraform_version = "1.9.6" 
 }
 
-# resource "tfe_variable" "aws_region-10" {
-#   key          = "aws_region"
-#   value        = var.aws_region
-#   category     = "terraform"
-#   workspace_id = tfe_workspace.stm-10-foundation.id
-#   description  = "AWS Region to be used"
-# }
+resource "tfe_variable" "demo" {
+  key          = "windows_password"
+  value        = var.windows_password
+  category     = "terraform"
+  workspace_id = tfe_workspace.demo.id
+  description  = "Windows RDP PW"
+}
