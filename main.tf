@@ -67,7 +67,7 @@ resource "tfe_workspace" "demo" {
     oauth_token_id = var.oauth_token_id
   }
   allow_destroy_plan = true
-  auto_apply = false
+  auto_apply = true
   global_remote_state = true 
   queue_all_runs = true  
   terraform_version = "1.9.6" 
