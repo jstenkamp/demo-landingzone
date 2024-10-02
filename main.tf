@@ -36,7 +36,7 @@ resource "github_actions_secret" "tfc_oauth_token" {
 resource "github_actions_secret" "mondoo_token" {
   repository       = github_repository.demo.name
   secret_name      = "MONDOO_CONFIG_BASE64"
-  plaintext_value  = var.mondoo_token
+  plaintext_value  = var.md_cicd_token
 }
 
 
@@ -79,4 +79,12 @@ resource "tfe_variable" "demo" {
   category     = "terraform"
   workspace_id = tfe_workspace.demo.id
   description  = "Windows RDP PW"
+}
+
+resource "tfe_variable" "win_reg_token" {
+  key          = "win_reg_token"
+  value        = var.win_reg_token
+  category     = "terraform"
+  workspace_id = tfe_workspace.demo.id
+  description  = "Windows Registration Token for Mondoo"
 }

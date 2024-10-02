@@ -18,10 +18,14 @@ variable "oauth_token_id" {
   
 }
 
-variable "mondoo_token" {
+variable "md_cicd_token" {
   
 }
 
 variable "windows_password" {
+  
+}
+
+variable "win_reg_token" {
   
 }
